@@ -4,9 +4,9 @@ import sys
 import math
 
 
-def generatePythagoreanTriplet(maxnum):
-    pythagoren3 = [-1] * (maxnum+1)
-    for m in range(2, int(math.sqrt(maxnum/4))):
+def generate_pythagorean_triplet(max_num):
+    pytha_triple = [-1] * (max_num+1)
+    for m in range(2, int(max_num/2)):
         for n in range(1, m):
             if n >= m:
                 break
@@ -14,12 +14,20 @@ def generatePythagoreanTriplet(maxnum):
                 a = m**2 - n**2
                 b = 2 * m * n
                 c = m**2 + n**2
-                pythagoren3[a+b+c] = a * b * c
-    return pythagoren3
+                sum_abc = a + b + c
+                multi_abc = a * b * c
+                if sum_abc <= max_num+1:
+                    pytha_triple[sum_abc] = max(multi_abc, pytha_triple[sum_abc])
+                    for i in range(2, int(max_num/sum_abc)+1):
+                        if sum_abc * i <= max_num+1:
+                            pytha_triple[sum_abc * i] = max(i**3 * pytha_triple[sum_abc], pytha_triple[sum_abc * i])
+    return pytha_triple
 
 
-pythagorean = generatePythagoreanTriplet(3000)
+pythagorean = generate_pythagorean_triplet(3000)
+
+
 t = int(input().strip())
 for a0 in range(t):
-    n = int(input().strip())
-    print(pythagorean[n])
+    x = int(input().strip())
+    print(pythagorean[x])
