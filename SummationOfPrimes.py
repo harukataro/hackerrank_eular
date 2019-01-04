@@ -1,38 +1,38 @@
 #!/bin/python3
 
 import sys
-import math
+
+def prime_eratosthenes():
+    prime = [0] * 1000
+    data = [i + 1 for i in range(1, 100000)]
+    s = 0
+    while True:
+        p = data[0]
+        if 100000 <= p*p:
+            del prime[s+1:len(prime)]
+            return prime + data
+        prime[s] = p
+        s = s + 1
+        data = [e for e in data if e % p != 0]
 
 
-def is_prime(n):
-    for i in range(2, int(math.sqrt(n)) + 1):
-        if n % i == 0:
-            return False
-    return True
-
-
-def prime_array():
-    primeArr = []
-    primeArr.append(2)
-    i = 1
-    while i <= 100000:
-        i += 2
-        if is_prime(i):
-            primeArr.append(i)
-    return primeArr
-
-def prime_sum(n, primeArr):
-    prime_sum_num = 0
-    for i in range(0, len(primeArr)):
-        if primeArr[i] > n:
-            break
+def make_prime_sum_list():
+    prime_data = prime_eratosthenes()
+    prime_sum = [0] * 100001
+    prime_sum[2] = 2
+    j = 1
+    plen = len(prime_data)
+    for i in range(3, 100001):
+        if prime_data[j] == i:
+            prime_sum[i] = prime_sum[i-1] + prime_data[j]
         else:
-            prime_sum_num += primeArr[i]
-    return prime_sum_num
+            prime_sum[i] = prime_sum[i - 1]
+    return prime_sum
 
 
-primeArr = prime_array()
-t = int(input().strip())
-for a0 in range(t):
-    n = int(input().strip())
-    print(prime_sum(n, primeArr))
+prime_sum_list = make_prime_sum_list()
+# t = int(input().strip())
+# for a0 in range(t):
+#     n = int(input().strip())
+#     print(prime_sum_read(n, prime_sum_list))
+print(prime_sum_list[10])

@@ -23,8 +23,6 @@ for a0 in range(t):
             i=i+1
 print(n)
 print(maxfactor)
-ans = int (max (n,maxfactor))
+ans = int (max (n, maxfactor))
 print(ans)
 
-
-            

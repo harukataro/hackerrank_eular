@@ -20,19 +20,24 @@ def tripleNumcombinationGenerator(n):
         if n < 12:
             return -1
         else:
-            for i in range(n-2, 4, -1):
+            for i in range(int(n/3)+1, int(n/2)):
                 c = i
-                for j in range(n-c-1, 1, -1):
+                for j in range(int((n-c)/2)+1, n-c):
                     b = j
                     a = n - b - c
-                    print(a, b, c)
-                    abc = numPythagoreanTriplet(a, b, c)
-                    if abc > max_num:
-                        max_num = abc
-        return max_num
+                    if a > b:
+                        break
+                    else:
+                        if ((a % 4) * (b % 4) * (a % 3) * (b % 3) == 0) and ((a % 5) * (b % 5) * (c % 5) == 0):
+                            abc = numPythagoreanTriplet(a, b, c)
+                            print(c, b, a, abc)
+                            if abc > max_num:
+                                return abc
+        return -1
 
 
-t = int(input().strip())
-for a0 in range(t):
-    n = int(input().strip())
-    print(tripleNumcombinationGenerator(n))
+# t = int(input().strip())
+# for a0 in range(t):
+#     n = int(input().strip())
+#    print(tripleNumcombinationGenerator(n))
+print(tripleNumcombinationGenerator(736))

@@ -3,17 +3,17 @@
 import sys
 
 def prime_eratosthenes():
-    prime = [0] * 1000
-    data = [i + 1 for i in range(1, 100000)]
-    s = 0
-    while True:
-        p = data[0]
-        if 100000 <= p*p:
-            del prime[s+1:len(prime)]
-            return prime + data
-        prime[s] = p
-        s = s + 1
-        data = [e for e in data if e % p != 0]
+    prime = [i for i in range(0, 100001)]
+    prime_sum = [0] *100001
+    prime[1] = 0
+    for i in range(2, 100002):
+        if prime[i] != 0:
+            while :
+            prime[i*j] = 0
+
+
+
+
 
 
 def make_prime_sum_list():
