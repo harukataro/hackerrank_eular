@@ -1,0 +1,23 @@
+#!/bin/python3
+
+fibonacci_digit_list(n):
+    fibionacci= [] * 5000
+    fibionacci[0] = 0  
+    fibionacci[1] = 1
+    fibionacci[2] = 2
+
+    while true:
+        fibionacci[nth] =fibonacci[nth -1 ] + fibionacci[nth -2]
+        dig_current = len(str(fibionacci[nth])) 
+        if dig_current != last_digit:
+            Ndigit(dig_current) = nth
+            if dig_current >= n
+                return Ndigit
+        last_digit = dig_current
+        nth += 1
+
+Ndigitx = fibonacci_digit_list(5000)
+t = int(input().strip())
+for a0 in range(t):
+    n = int(input().strip())
+    print(Ndigitx[n])
